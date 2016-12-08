@@ -26,5 +26,12 @@ namespace ASPFinal.Controllers
 
             return View();
         }
+
+        public ActionResult Inventory()
+        {
+            ViewBag.Message = "Your inventory page.";
+
+            return View();
+        }
     }
 }

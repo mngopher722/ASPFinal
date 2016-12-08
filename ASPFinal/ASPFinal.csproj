@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -52,6 +60,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,21 +130,181 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BookStoreFinal.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AUTHOR.cs">
+      <DependentUpon>HenrysBookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BOOK.cs">
+      <DependentUpon>HenrysBookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BRANCH.cs">
+      <DependentUpon>HenrysBookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HenrysBookStore.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HenrysBookStore.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HenrysBookStore.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HenrysBookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HenrysBookStore.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HenrysBookStore.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INVENTORY.cs">
+      <DependentUpon>HenrysBookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PUBLISHER.cs">
+      <DependentUpon>HenrysBookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WROTE.cs">
+      <DependentUpon>HenrysBookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\0180\large.jpg" />
+    <Content Include="Content\Images\0180\thumb.jpg" />
+    <Content Include="Content\Images\0189\large.jpg" />
+    <Content Include="Content\Images\0189\thumb.jpg" />
+    <Content Include="Content\Images\0189\thumb.png" />
+    <Content Include="Content\Images\0200\large.jpg" />
+    <Content Include="Content\Images\0200\thumb.jpg" />
+    <Content Include="Content\Images\0378\large.jpg" />
+    <Content Include="Content\Images\0378\thumb.jpg" />
+    <Content Include="Content\Images\079X\large.jpg" />
+    <Content Include="Content\Images\079X\thumb.jpg" />
+    <Content Include="Content\Images\079X\thumb.png" />
+    <Content Include="Content\Images\0808\large.jpg" />
+    <Content Include="Content\Images\0808\thumb.jpg" />
+    <Content Include="Content\Images\1351\large.jpg" />
+    <Content Include="Content\Images\1351\thumb.jpg" />
+    <Content Include="Content\Images\1382\large.jpg" />
+    <Content Include="Content\Images\1382\thumb.jpg" />
+    <Content Include="Content\Images\138X\large.jpg" />
+    <Content Include="Content\Images\138X\thumb.jpg" />
+    <Content Include="Content\Images\2226\large.jpg" />
+    <Content Include="Content\Images\2226\thumb.jpg" />
+    <Content Include="Content\Images\2281\large.jpg" />
+    <Content Include="Content\Images\2281\thumb.jpg" />
+    <Content Include="Content\Images\2766\large.jpg" />
+    <Content Include="Content\Images\2766\thumb.jpg" />
+    <Content Include="Content\Images\2908\large.jpg" />
+    <Content Include="Content\Images\2908\thumb.jpg" />
+    <Content Include="Content\Images\3350\large.jpg" />
+    <Content Include="Content\Images\3350\thumb.gif" />
+    <Content Include="Content\Images\3350\thumb.jpg" />
+    <Content Include="Content\Images\3743\large.jpg" />
+    <Content Include="Content\Images\3743\thumb.jpg" />
+    <Content Include="Content\Images\3906\large.jpg" />
+    <Content Include="Content\Images\3906\thumb.jpg" />
+    <Content Include="Content\Images\5163\large.jpg" />
+    <Content Include="Content\Images\5163\thumb.jpg" />
+    <Content Include="Content\Images\5790\large.jpg" />
+    <Content Include="Content\Images\5790\thumb.jpg" />
+    <Content Include="Content\Images\6128\large.jpg" />
+    <Content Include="Content\Images\6128\thumb.jpg" />
+    <Content Include="Content\Images\6328\large.jpg" />
+    <Content Include="Content\Images\6328\thumb.jpg" />
+    <Content Include="Content\Images\669X\large.jpg" />
+    <Content Include="Content\Images\669X\thumb.jpg" />
+    <Content Include="Content\Images\6908\large.jpg" />
+    <Content Include="Content\Images\6908\thumb.jpg" />
+    <Content Include="Content\Images\7405\large.jpg" />
+    <Content Include="Content\Images\7405\thumb.jpg" />
+    <Content Include="Content\Images\7443\large.jpg" />
+    <Content Include="Content\Images\7443\thumb.jpg" />
+    <Content Include="Content\Images\7559\large.jpg" />
+    <Content Include="Content\Images\7559\thumb.jpg" />
+    <Content Include="Content\Images\8092\large.jpg" />
+    <Content Include="Content\Images\8092\large2.jpg" />
+    <Content Include="Content\Images\8092\thumb.jpg" />
+    <Content Include="Content\Images\8720\large.jpg" />
+    <Content Include="Content\Images\8720\thumb.jpg" />
+    <Content Include="Content\Images\9611\large.jpg" />
+    <Content Include="Content\Images\9611\thumb.jpg" />
+    <Content Include="Content\Images\9627\large.jpg" />
+    <Content Include="Content\Images\9627\thumb.jpg" />
+    <Content Include="Content\Images\9701\large.jpg" />
+    <Content Include="Content\Images\9701\thumb.jpg" />
+    <Content Include="Content\Images\9882\large.jpg" />
+    <Content Include="Content\Images\9882\thumb.jpg" />
+    <Content Include="Content\Images\9883\large.jpg" />
+    <Content Include="Content\Images\9883\thumb.jpg" />
+    <Content Include="Content\Images\9931\large.jpg" />
+    <Content Include="Content\Images\9931\thumb.jpg" />
+    <Content Include="Content\Images\author.jpg" />
+    <Content Include="Content\Images\books.jpg" />
+    <Content Include="Content\Images\bookstore.jpg" />
+    <Content Include="Content\Images\inventory.jpg" />
+    <Content Include="Content\Images\publisher.jpg" />
+    <Content Include="Content\Images\wood.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\HenrysBookStore.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HenrysBookStore.edmx</DependentUpon>
+      <LastGenOutput>HenrysBookStore.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HenrysBookStore.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HenrysBookStore.edmx</DependentUpon>
+      <LastGenOutput>HenrysBookStore.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Images\0180\Thumbs.db" />
+    <Content Include="Content\Images\0189\Thumbs.db" />
+    <Content Include="Content\Images\0200\Thumbs.db" />
+    <Content Include="Content\Images\0378\Thumbs.db" />
+    <Content Include="Content\Images\079X\Thumbs.db" />
+    <Content Include="Content\Images\0808\Thumbs.db" />
+    <Content Include="Content\Images\1351\Thumbs.db" />
+    <Content Include="Content\Images\1382\Thumbs.db" />
+    <Content Include="Content\Images\138X\Thumbs.db" />
+    <Content Include="Content\Images\2226\Thumbs.db" />
+    <Content Include="Content\Images\2281\Thumbs.db" />
+    <Content Include="Content\Images\2766\Thumbs.db" />
+    <Content Include="Content\Images\2908\Thumbs.db" />
+    <Content Include="Content\Images\3350\Thumbs.db" />
+    <Content Include="Content\Images\3743\Thumbs.db" />
+    <Content Include="Content\Images\3906\Thumbs.db" />
+    <Content Include="Content\Images\5163\Thumbs.db" />
+    <Content Include="Content\Images\5790\Thumbs.db" />
+    <Content Include="Content\Images\6128\Thumbs.db" />
+    <Content Include="Content\Images\6328\Thumbs.db" />
+    <Content Include="Content\Images\669X\Thumbs.db" />
+    <Content Include="Content\Images\6908\Thumbs.db" />
+    <Content Include="Content\Images\7405\Thumbs.db" />
+    <Content Include="Content\Images\7443\Thumbs.db" />
+    <Content Include="Content\Images\7559\Thumbs.db" />
+    <Content Include="Content\Images\8092\Thumbs.db" />
+    <Content Include="Content\Images\8720\Thumbs.db" />
+    <Content Include="Content\Images\9611\Thumbs.db" />
+    <Content Include="Content\Images\9627\Thumbs.db" />
+    <Content Include="Content\Images\9701\Thumbs.db" />
+    <Content Include="Content\Images\9882\Thumbs.db" />
+    <Content Include="Content\Images\9883\Thumbs.db" />
+    <Content Include="Content\Images\9931\Thumbs.db" />
+    <EntityDeploy Include="Models\HenrysBookStore.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HenrysBookStore.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HenrysBookStore.edmx.diagram">
+      <DependentUpon>HenrysBookStore.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -161,10 +331,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Inventory.cshtml" />
+    <Content Include="Views\Shared\NavigationBox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -173,6 +344,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

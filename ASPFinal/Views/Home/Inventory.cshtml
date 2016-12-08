@@ -1,28 +1,29 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Inventory";
 }
-
+@Html.Partial("NaviagtionBox")
 <div class="jumbotron">
     <h1>Henry's BookStore</h1>
     @*<p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>*@
     @*<p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
 </div>
-
 <div class="row">
     <div class="col-md-6">
         <h2>Browse Inventory</h2>
-        <p><a class="btn btn-default" href="~/Views/Home/Inventory.cshtml"><img src="~/Content/Images/inventory.jpg" alt="Inventory" /></a></p>
+        <p><a class="btn btn-default" href="~/Views/Home/Inventory.cshtml"><img src="~/Content/Images/inventory.jpg" alt="Invetory" /></a></p>
     </div>
     <div class="col-md-6">
         <h2>Browse By Author</h2>
-        <p><a class="btn btn-default" href="author.cshtml"><img src="~/Content/Images/author.jpg" alt="Author"/></a></p>
+        <p><a class="btn btn-default" href="author.cshtml"><img src="~/Content/Images/author.jpg" alt="Author" /></a></p>
     </div>
     <div class="col-md-6">
         <h2>Browse By Publisher</h2>
-        <p><a class="btn btn-default" href="publisher.cshtml"><img src="~/Content/Images/publisher.jpg" alt="Publisher"/></a></p>
+        <p><a class="btn btn-default" href="publisher.cshtml"><img src="~/Content/Images/publisher.jpg" alt="Publisher" /></a></p>
     </div>
     <div class="col-md-6">
         <h2>Browse By Location</h2>
-        <p><a class="btn btn-default" href="location.cshtml"><img src="~/Content/Images/bookstore.jpg" alt="Location"/></a></p>
+        <p><a class="btn btn-default" href="location.cshtml"><img src="~/Content/Images/bookstore.jpg" alt="Location" /></a></p>
     </div>
 </div>
+
