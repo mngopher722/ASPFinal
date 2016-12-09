@@ -11,7 +11,8 @@ namespace ASPFinal.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class BOOK
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +21,7 @@ namespace ASPFinal.Models
             this.INVENTORY = new HashSet<INVENTORY>();
             this.WROTE = new HashSet<WROTE>();
         }
-    
+        [Key]
         public string BOOK_CODE { get; set; }
         public string TITLE { get; set; }
         public string PUBLISHER_CODE { get; set; }
