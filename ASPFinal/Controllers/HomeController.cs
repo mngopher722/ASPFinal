@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ASPFinal.Models;
 
 namespace ASPFinal.Controllers
 {
     public class HomeController : Controller
     {
+        private HenrysBookStore db = new HenrysBookStore();
         public ActionResult Index()
         {
             return View();
@@ -31,7 +33,65 @@ namespace ASPFinal.Controllers
         {
             ViewBag.Message = "Your inventory page.";
 
-            return View();
+            return View(db.BOOK);
+        }
+        public ActionResult Author(int id = -1)
+        {
+            IEnumerable<AUTHOR> authorlist = db.AUTHOR;
+
+            List<SelectListItem> authors = new List<SelectListItem>();
+
+            foreach (AUTHOR author in authorlist)
+            {
+                authors.Add(new SelectListItem
+                {
+                    Text = author.AUTHOR_FIRST +
+                    author.AUTHOR_LAST,
+                    Value = author.AUTHOR_NUM.ToString()
+                });
+            }
+
+            ViewBag.Message = "Your Author page.";
+            var books = new List<BOOK>();
+            if (id > 0)
+            {
+                //foreach (SelectListItem author in authors)
+                //{
+                //    if (int.Parse(author.Value) == id)
+                //    {
+                //        author.Selected = true;
+                //    }
+                //}
+
+                authors.First(a => a.Value == id.ToString()).Selected = true;
+
+                foreach (BOOK book in db.BOOK)
+                {
+                    foreach (WROTE wrote in db.WROTE)
+                    {
+                        if (wrote.AUTHOR_NUM == id)
+                        {
+                            books.Add(book);
+                        }
+                    }
+                }
+            }
+
+            ViewBag.authors = authors;
+            if (id > 0)
+            {
+                return View(books);
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public ActionResult Book(string bookcode)
+        {  
+            ViewBag.Message = "Your details page.";
+
+            return View(db.BOOK.First(b => b.BOOK_CODE == bookcode));
         }
     }
 }

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ASPFinal.Models.BOOK>
+@{
+    ViewBag.Title = "Author";
+    ASPFinal.Models.HenrysBookStore db = new ASPFinal.Models.HenrysBookStore();
+}
+@Html.Partial("NavigationBox")
+
+<div class="row">
+    <div class="text-center">
+        <h2>Author</h2>
+    </div>
+    <div class="col-md-7">
+        @using (Html.BeginForm("Author", "Home", FormMethod.Get))
+        {
+        @Html.DropDownList("authors", (IEnumerable<SelectListItem>)ViewBag.authors,"Select Author", new { onchange = "this.form.submit();", Name = "id"})
+        }
+    </div>
+</div>
