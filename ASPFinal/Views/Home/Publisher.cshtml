@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ASPFinal.Models.BOOK>
+
+@{
+    ViewBag.Title = "Publisher";
+    ASPFinal.Models.HenrysBookStore db = new ASPFinal.Models.HenrysBookStore();
+}
+@Html.Partial("NavigationBox")
+<div class="row">
+    <div class="text-center">
+        <h2>Publisher</h2>
+        @using (Html.BeginForm("Publisher", "Home", FormMethod.Get))
+        {
+            @Html.DropDownList("publishers", (IEnumerable<SelectListItem>)ViewBag.publishers, "Select Publisher", new { onchange = "this.form.submit();", Name = "id" })
+            @*<table>
+                    <thead>
+                        <tr>
+                            <th>Book Code</th>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Paperback?</th>
+                            <th>Publisher</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var book in Model)
+                        {
+                            <tr>
+                                <td>@book.BOOK_CODE</td>
+                                <td>@book.TITLE</td>
+                                <td>@book.TYPE</td>
+                                <td>@book.PRICE</td>
+                                <td>@book.PAPERBACK</td>
+                                <td>@book.PUBLISHER</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>*@
+        }
+    </div>
+</div>

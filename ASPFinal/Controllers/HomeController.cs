@@ -35,17 +35,65 @@ namespace ASPFinal.Controllers
 
             return View(db.BOOK);
         }
+        public ActionResult Publisher(int id = -1)
+        {
+            IEnumerable<PUBLISHER> publisherlist = db.PUBLISHER;
+            List<SelectListItem> publishers = new List<SelectListItem>();
+            foreach (PUBLISHER publisher in publisherlist)
+            {
+                publishers.Add(new SelectListItem
+                {
+                    Text = publisher.PUBLISHER_NAME,
+                    Value = publisher.PUBLISHER_CODE
+                });
+            }
+            ViewBag.Message = "your publisher page";
+            var books = new List<BOOK>();
+            if (id > 0)
+            {
+                //foreach (SelectListItem author in authors)
+                //{
+                //    if (int.Parse(author.Value) == id)
+                //    {
+                //        author.Selected = true;
+                //    }
+                //}
+
+                publishers.First(a => a.Value == id.ToString()).Selected = true;
+
+                foreach (BOOK book in db.BOOK)
+                {
+                    foreach (WROTE wrote in db.WROTE)
+                    {
+                        if (wrote.AUTHOR_NUM == id)
+                        {
+                            books.Add(book);
+                        }
+                    }
+                }
+            }
+
+            ViewBag.publishers = publishers;
+            if (id > 0)
+            {
+                return View(books);
+            }
+            else
+            {
+                return View();
+            }
+        }
         public ActionResult Author(int id = -1)
         {
             IEnumerable<AUTHOR> authorlist = db.AUTHOR;
 
             List<SelectListItem> authors = new List<SelectListItem>();
-
+             
             foreach (AUTHOR author in authorlist)
             {
                 authors.Add(new SelectListItem
                 {
-                    Text = author.AUTHOR_FIRST +
+                    Text = author.AUTHOR_FIRST + " " +
                     author.AUTHOR_LAST,
                     Value = author.AUTHOR_NUM.ToString()
                 });

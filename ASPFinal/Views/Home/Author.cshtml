@@ -13,6 +13,31 @@
         @using (Html.BeginForm("Author", "Home", FormMethod.Get))
         {
         @Html.DropDownList("authors", (IEnumerable<SelectListItem>)ViewBag.authors,"Select Author", new { onchange = "this.form.submit();", Name = "id"})
+            @*<table>
+                <thead>
+                    <tr>
+                        <th>Book Code</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Paperback?</th>
+                        <th>Publisher</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var book in Model)
+                    {
+                        <tr>
+                            <td>@book.BOOK_CODE</td>
+                            <td>@book.TITLE</td>
+                            <td>@book.TYPE</td>
+                            <td>@book.PRICE</td>
+                            <td>@book.PAPERBACK</td>
+                            <td>@book.PUBLISHER</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>*@
         }
     </div>
 </div>
