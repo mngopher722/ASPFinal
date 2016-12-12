@@ -13,7 +13,7 @@
         @using (Html.BeginForm("Author", "Home", FormMethod.Get))
         {
         @Html.DropDownList("authors", (IEnumerable<SelectListItem>)ViewBag.authors,"Select Author", new { onchange = "this.form.submit();", Name = "id"})
-            @*<table>
+            <table>
                 <thead>
                     <tr>
                         <th>Book Code</th>
@@ -37,7 +37,7 @@
                         </tr>
                     }
                 </tbody>
-            </table>*@
+            </table>
         }
     </div>
 </div>
