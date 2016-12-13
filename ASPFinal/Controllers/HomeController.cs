@@ -35,7 +35,7 @@ namespace ASPFinal.Controllers
 
             return View(db.BOOK);
         }
-        public ActionResult Publisher(int id = -1)
+        public ActionResult Publisher(string pub_Code)
         {
             IEnumerable<PUBLISHER> publisherlist = db.PUBLISHER;
             List<SelectListItem> publishers = new List<SelectListItem>();
@@ -49,37 +49,23 @@ namespace ASPFinal.Controllers
             }
             ViewBag.Message = "your publisher page";
             var books = new List<BOOK>();
-            if (id > 0)
+            if (pub_Code != null && pub_Code.Trim() != "")
             {
-                //foreach (SelectListItem author in authors)
-                //{
-                //    if (int.Parse(author.Value) == id)
-                //    {
-                //        author.Selected = true;
-                //    }
-                //}
-
-                publishers.First(a => a.Value == id.ToString()).Selected = true;
+                publishers.First(p => p.Value == pub_Code).Selected = true;
 
                 foreach (BOOK book in db.BOOK)
                 {
-                    foreach (WROTE wrote in db.WROTE)
+                    if (book.PUBLISHER_CODE == pub_Code)
                     {
-                        if (wrote.AUTHOR_NUM == id)
-                        {
-                            books.Add(book);
-                        }
+                        books.Add(book);
                     }
                 }
-            }
-
-            ViewBag.publishers = publishers;
-            if (id > 0)
-            {
+                ViewBag.publishers = publishers;
                 return View(books);
             }
             else
             {
+                ViewBag.publishers = publishers;
                 return View();
             }
         }
@@ -88,7 +74,7 @@ namespace ASPFinal.Controllers
             IEnumerable<AUTHOR> authorlist = db.AUTHOR;
 
             List<SelectListItem> authors = new List<SelectListItem>();
-             
+
             foreach (AUTHOR author in authorlist)
             {
                 authors.Add(new SelectListItem
@@ -115,7 +101,7 @@ namespace ASPFinal.Controllers
 
                 foreach (BOOK book in db.BOOK)
                 {
-                    foreach (WROTE wrote in db.WROTE)
+                    foreach (WROTE wrote in book.WROTE)
                     {
                         if (wrote.AUTHOR_NUM == id)
                         {
@@ -136,7 +122,7 @@ namespace ASPFinal.Controllers
             }
         }
         public ActionResult Book(string bookcode)
-        {  
+        {
             ViewBag.Message = "Your details page.";
 
             return View(db.BOOK.First(b => b.BOOK_CODE == bookcode));

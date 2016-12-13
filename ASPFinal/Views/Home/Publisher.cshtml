@@ -10,8 +10,8 @@
         <h2>Publisher</h2>
         @using (Html.BeginForm("Publisher", "Home", FormMethod.Get))
         {
-            @Html.DropDownList("publishers", (IEnumerable<SelectListItem>)ViewBag.publishers, "Select Publisher", new { onchange = "this.form.submit();", Name = "id" })
-            @*<table>
+            @Html.DropDownList("publishers", (IEnumerable<SelectListItem>)ViewBag.publishers, "Select Publisher", new { onchange = "this.form.submit();", Name = "pub_Code" })
+            <table>
                     <thead>
                         <tr>
                             <th>Book Code</th>
@@ -35,7 +35,7 @@
                             </tr>
                         }
                     </tbody>
-                </table>*@
+                </table>
         }
     </div>
 </div>

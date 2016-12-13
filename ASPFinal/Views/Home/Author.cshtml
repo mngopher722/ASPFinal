@@ -12,32 +12,34 @@
     <div class="col-md-7">
         @using (Html.BeginForm("Author", "Home", FormMethod.Get))
         {
-        @Html.DropDownList("authors", (IEnumerable<SelectListItem>)ViewBag.authors,"Select Author", new { onchange = "this.form.submit();", Name = "id"})
-            <table>
-                <thead>
-                    <tr>
-                        <th>Book Code</th>
-                        <th>Title</th>
-                        <th>Type</th>
-                        <th>Price</th>
-                        <th>Paperback?</th>
-                        <th>Publisher</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var book in Model)
-                    {
+            @Html.DropDownList("authors", (IEnumerable<SelectListItem>)ViewBag.authors, "Select Author", new { onchange = "this.form.submit();", Name = "id" })
+            if (Model != null)
+            {
+                <table>
+                    <thead>
                         <tr>
-                            <td>@book.BOOK_CODE</td>
-                            <td>@book.TITLE</td>
-                            <td>@book.TYPE</td>
-                            <td>@book.PRICE</td>
-                            <td>@book.PAPERBACK</td>
-                            <td>@book.PUBLISHER</td>
+                            <th>Book Code</th>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Paperback?</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var book in Model)
+                    {
+                            <tr>
+                                @*<td>@book.BOOK_CODE</td>*@
+                                <td>@Html.RouteLink(@book.BOOK_CODE,"Book")</td>
+                                <td>@book.TITLE</td>
+                                <td>@book.TYPE</td>
+                                <td>@book.PRICE</td>
+                                <td>@book.PAPERBACK</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
         }
     </div>
 </div>
