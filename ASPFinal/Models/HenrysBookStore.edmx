@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HenryBookStore.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="asp6Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AUTHOR">
           <Key>
             <PropertyRef Name="AUTHOR_NUM" />
@@ -30,7 +30,7 @@
           </Key>
           <Property Name="BRANCH_NUM" Type="int" Nullable="false" />
           <Property Name="BRANCH_NAME" Type="varchar" MaxLength="50" />
-          <Property Name="BRANCH_LOCATION" Type="varbinary" MaxLength="50" />
+          <Property Name="BRANCH_LOCATION" Type="varchar" MaxLength="50" />
           <Property Name="NUM_EMPLOYEES" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="INVENTORY">
@@ -119,7 +119,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HenryBookStoreStoreContainer">
+        <EntityContainer Name="asp6ModelStoreContainer">
           <EntitySet Name="AUTHOR" EntityType="Self.AUTHOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BOOK" EntityType="Self.BOOK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BRANCH" EntityType="Self.BRANCH" Schema="dbo" store:Type="Tables" />
@@ -151,7 +151,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="HenryBookStore" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="asp6Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AUTHOR">
           <Key>
             <PropertyRef Name="AUTHOR_NUM" />
@@ -181,7 +181,7 @@
           </Key>
           <Property Name="BRANCH_NUM" Type="Int32" Nullable="false" />
           <Property Name="BRANCH_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BRANCH_LOCATION" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="BRANCH_LOCATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NUM_EMPLOYEES" Type="Int32" Nullable="false" />
           <NavigationProperty Name="INVENTORY" Relationship="Self.FK_INVENTORY_BRANCH" FromRole="BRANCH" ToRole="INVENTORY" />
         </EntityType>
@@ -309,9 +309,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HenryBookStoreStoreContainer" CdmEntityContainer="HenrysBookStore">
+        <EntityContainerMapping StorageEntityContainer="asp6ModelStoreContainer" CdmEntityContainer="HenrysBookStore">
           <EntitySetMapping Name="AUTHOR">
-            <EntityTypeMapping TypeName="HenryBookStore.AUTHOR">
+            <EntityTypeMapping TypeName="asp6Model.AUTHOR">
               <MappingFragment StoreEntitySet="AUTHOR">
                 <ScalarProperty Name="AUTHOR_NUM" ColumnName="AUTHOR_NUM" />
                 <ScalarProperty Name="AUTHOR_LAST" ColumnName="AUTHOR_LAST" />
@@ -320,7 +320,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BOOK">
-            <EntityTypeMapping TypeName="HenryBookStore.BOOK">
+            <EntityTypeMapping TypeName="asp6Model.BOOK">
               <MappingFragment StoreEntitySet="BOOK">
                 <ScalarProperty Name="BOOK_CODE" ColumnName="BOOK_CODE" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
@@ -332,7 +332,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BRANCH">
-            <EntityTypeMapping TypeName="HenryBookStore.BRANCH">
+            <EntityTypeMapping TypeName="asp6Model.BRANCH">
               <MappingFragment StoreEntitySet="BRANCH">
                 <ScalarProperty Name="BRANCH_NUM" ColumnName="BRANCH_NUM" />
                 <ScalarProperty Name="BRANCH_NAME" ColumnName="BRANCH_NAME" />
@@ -342,7 +342,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="INVENTORY">
-            <EntityTypeMapping TypeName="HenryBookStore.INVENTORY">
+            <EntityTypeMapping TypeName="asp6Model.INVENTORY">
               <MappingFragment StoreEntitySet="INVENTORY">
                 <ScalarProperty Name="BOOK_CODE" ColumnName="BOOK_CODE" />
                 <ScalarProperty Name="BRANCH_NUM" ColumnName="BRANCH_NUM" />
@@ -351,7 +351,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PUBLISHER">
-            <EntityTypeMapping TypeName="HenryBookStore.PUBLISHER">
+            <EntityTypeMapping TypeName="asp6Model.PUBLISHER">
               <MappingFragment StoreEntitySet="PUBLISHER">
                 <ScalarProperty Name="PUBLISHER_CODE" ColumnName="PUBLISHER_CODE" />
                 <ScalarProperty Name="PUBLISHER_NAME" ColumnName="PUBLISHER_NAME" />
@@ -360,7 +360,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WROTE">
-            <EntityTypeMapping TypeName="HenryBookStore.WROTE">
+            <EntityTypeMapping TypeName="asp6Model.WROTE">
               <MappingFragment StoreEntitySet="WROTE">
                 <ScalarProperty Name="BOOK_CODE" ColumnName="BOOK_CODE" />
                 <ScalarProperty Name="AUTHOR_NUM" ColumnName="AUTHOR_NUM" />

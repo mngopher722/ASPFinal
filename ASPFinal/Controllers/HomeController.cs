@@ -83,6 +83,7 @@ namespace ASPFinal.Controllers
             }
             ViewBag.Message = "Your Branch page.";
             var books = new List<BOOK>();
+
             if (branchnum > 0)
             {
                 branches.First(b => b.Value == branchnum.ToString()).Selected = true;
@@ -101,7 +102,7 @@ namespace ASPFinal.Controllers
             ViewBag.branches = branches;
             if (branchnum > 0)
             {
-                return View(books);
+                return View(branchlist); 
             }
             else
             {

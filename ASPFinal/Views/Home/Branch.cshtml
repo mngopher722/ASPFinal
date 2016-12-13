@@ -12,14 +12,11 @@
         @using (Html.BeginForm("Branch", "Home", FormMethod.Get))
         {
             @Html.DropDownList("branches", (IEnumerable<SelectListItem>)ViewBag.branches, "Select Branch", new { onchange = "this.form.submit();", Name = "branchnum" })
-            @*if (Model != null)
+            if (Model != null)
+            {
+                foreach (var branch in Model)
                 {
-                    foreach (var branch in Model)
-                    {
-                        <table>
-
-                        </table>*@
-            @*<table>
+                    <table>
                         <tr>
                             <th>Branch Number</th>
                             <td>@branch.BRANCH_NUM</td>
@@ -43,8 +40,8 @@
                             <td>@branch.NUM_EMPLOYEES</td>
                         </tr>
                     </table>
-                }*@
-        }
+                }
+            }
         }
     </div>
 </div>
