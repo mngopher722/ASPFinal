@@ -18,7 +18,8 @@
     <div class="col-md-7">
         @foreach (var book_code in book)
         {
-            <a href="~/Content/Images/@book_code.Key/large.jpg">
+            @*<a href="~/Content/Images/@book_code.Key/large.jpg">*@
+            <a href='@Url.Action("Book", "Home", new { bookcode = book.BOOK_CODE })'>
                 <img src="~/Content/Images/@book_code.Key/thumb.jpg" alt="Picture Missing" />
             </a>
         }

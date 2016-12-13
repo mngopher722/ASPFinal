@@ -23,18 +23,19 @@
                             <th>Type</th>
                             <th>Price</th>
                             <th>Paperback?</th>
+                            <th>Publisher</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var book in Model)
                     {
                             <tr>
-                                @*<td>@book.BOOK_CODE</td>*@
-                                <td>@Html.RouteLink(@book.BOOK_CODE,"Book")</td>
+                                <td><a href='@Url.Action("Book", "Home", new { bookcode = book.BOOK_CODE })'>@book.BOOK_CODE</a></td>
                                 <td>@book.TITLE</td>
                                 <td>@book.TYPE</td>
                                 <td>@book.PRICE</td>
                                 <td>@book.PAPERBACK</td>
+                                <td><a href='@Url.Action("Publisher", "Home", new { publisher = book.PUBLISHER.PUBLISHER_NAME })'>@book.PUBLISHER.PUBLISHER_NAME</a></td>
                             </tr>
                         }
                     </tbody>
