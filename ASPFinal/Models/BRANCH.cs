@@ -22,7 +22,7 @@ namespace ASPFinal.Models
     
         public int BRANCH_NUM { get; set; }
         public string BRANCH_NAME { get; set; }
-        public byte[] BRANCH_LOCATION { get; set; }
+        public string BRANCH_LOCATION { get; set; }
         public int NUM_EMPLOYEES { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

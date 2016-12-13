@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ASPFinal.Models.BRANCH>
+
+@{
+    ViewBag.Title = "Branch";
+    ASPFinal.Models.HenrysBookStore db = new ASPFinal.Models.HenrysBookStore();
+}
+<div class="row">
+    <div class="text-center">
+        <h2>Branch</h2>
+    </div>
+    <div class="col-md-7">
+        @using (Html.BeginForm("Branch", "Home", FormMethod.Get))
+        {
+            @Html.DropDownList("branches", (IEnumerable<SelectListItem>)ViewBag.branches, "Select Branch", new { onchange = "this.form.submit();", Name = "branchnum" })
+            @*if (Model != null)
+                {
+                    foreach (var branch in Model)
+                    {
+                        <table>
+
+                        </table>*@
+            @*<table>
+                        <tr>
+                            <th>Branch Number</th>
+                            <td>@branch.BRANCH_NUM</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Branch Name</th>
+                            <td>@branch.BRANCH_NAME</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Branch Location</th>
+                            <td>@branch.BRANCH_LOCATION</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Number of Employees</th>
+                            <td>@branch.NUM_EMPLOYEES</td>
+                        </tr>
+                    </table>
+                }*@
+        }
+        }
+    </div>
+</div>

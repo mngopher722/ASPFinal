@@ -336,6 +336,7 @@
     <Content Include="Views\Home\Author.cshtml" />
     <Content Include="Views\Home\Book.cshtml" />
     <Content Include="Views\Home\Publisher.cshtml" />
+    <Content Include="Views\Home\Branch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

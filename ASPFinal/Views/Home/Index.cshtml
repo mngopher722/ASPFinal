@@ -11,18 +11,18 @@
 <div class="row">
     <div class="col-md-6">
         <h2>Browse Inventory</h2>
-        <p><a class="btn btn-default" href="Inventory.cshtml"><img src="~/Content/Images/inventory.jpg" alt="Inventory" /></a></p>
+        <p><a class="btn btn-default" href='@Url.Action("Inventory","Home")'><img src='@Url.Content("~/Content/Images/inventory.jpg")'/></a></p>
     </div>
     <div class="col-md-6">
         <h2>Browse By Author</h2>
-        <p><a class="btn btn-default" href="Author.cshtml"><img src="~/Content/Images/author.jpg" alt="Author"/></a></p>
+        <p><a class="btn btn-default" href='@Url.Action("Author","Home")'><img src='@Url.Content("~/Content/Images/author.jpg")'/></a></p>
     </div>
     <div class="col-md-6">
         <h2>Browse By Publisher</h2>
-        <p><a class="btn btn-default" href="publisher.cshtml"><img src="~/Content/Images/publisher.jpg" alt="Publisher"/></a></p>
+        <p><a class="btn btn-default" href='@Url.Action("Publisher","Home")'><img src='@Url.Content("~/Content/Images/publisher.jpg")'/></a></p>
     </div>
     <div class="col-md-6">
         <h2>Browse By Location</h2>
-        <p><a class="btn btn-default" href="location.cshtml"><img src="~/Content/Images/bookstore.jpg" alt="Location"/></a></p>
+        <p><a class="btn btn-default" href='@Url.Action("Branch","Home")'><img src='@Url.Content("~/Content/Images/bookstore.jpg")'/></a></p>
     </div>
 </div>

@@ -69,50 +69,37 @@ namespace ASPFinal.Controllers
                 return View();
             }
         }
-        public ActionResult Author(int id = -1)
+        public ActionResult Branch(int branchnum = -1)
         {
-            IEnumerable<AUTHOR> authorlist = db.AUTHOR;
-
-            List<SelectListItem> authors = new List<SelectListItem>();
-
-            foreach (AUTHOR author in authorlist)
+            IEnumerable<BRANCH> branchlist = db.BRANCH;
+            List<SelectListItem> branches = new List<SelectListItem>();
+            foreach (BRANCH branch in branchlist)
             {
-                authors.Add(new SelectListItem
+                branches.Add(new SelectListItem
                 {
-                    Text = author.AUTHOR_FIRST + " " +
-                    author.AUTHOR_LAST,
-                    Value = author.AUTHOR_NUM.ToString()
+                    Text = branch.BRANCH_NAME,
+                    Value = branch.BRANCH_NUM.ToString()
                 });
             }
-
-            ViewBag.Message = "Your Author page.";
+            ViewBag.Message = "Your Branch page.";
             var books = new List<BOOK>();
-            if (id > 0)
+            if (branchnum > 0)
             {
-                //foreach (SelectListItem author in authors)
-                //{
-                //    if (int.Parse(author.Value) == id)
-                //    {
-                //        author.Selected = true;
-                //    }
-                //}
-
-                authors.First(a => a.Value == id.ToString()).Selected = true;
+                branches.First(b => b.Value == branchnum.ToString()).Selected = true;
 
                 foreach (BOOK book in db.BOOK)
                 {
-                    foreach (WROTE wrote in book.WROTE)
+                    foreach (INVENTORY inventory in book.INVENTORY)
                     {
-                        if (wrote.AUTHOR_NUM == id)
+                        if (inventory.BRANCH_NUM == branchnum)
                         {
                             books.Add(book);
                         }
                     }
                 }
             }
-
-            ViewBag.authors = authors;
-            if (id > 0)
+            ViewBag.branches = branches;
+            if (branchnum > 0)
             {
                 return View(books);
             }
@@ -121,11 +108,60 @@ namespace ASPFinal.Controllers
                 return View();
             }
         }
-        public ActionResult Book(string bookcode)
+    public ActionResult Author(int id = -1)
+    {
+        IEnumerable<AUTHOR> authorlist = db.AUTHOR;
+        List<SelectListItem> authors = new List<SelectListItem>();
+        foreach (AUTHOR author in authorlist)
         {
-            ViewBag.Message = "Your details page.";
+            authors.Add(new SelectListItem
+            {
+                Text = author.AUTHOR_FIRST + " " +
+                author.AUTHOR_LAST,
+                Value = author.AUTHOR_NUM.ToString()
+            });
+        }
+        ViewBag.Message = "Your Author page.";
+        var books = new List<BOOK>();
+        if (id > 0)
+        {
+            //foreach (SelectListItem author in authors)
+            //{
+            //    if (int.Parse(author.Value) == id)
+            //    {
+            //        author.Selected = true;
+            //    }
+            //}
 
-            return View(db.BOOK.First(b => b.BOOK_CODE == bookcode));
+            authors.First(a => a.Value == id.ToString()).Selected = true;
+
+            foreach (BOOK book in db.BOOK)
+            {
+                foreach (WROTE wrote in book.WROTE)
+                {
+                    if (wrote.AUTHOR_NUM == id)
+                    {
+                        books.Add(book);
+                    }
+                }
+            }
+        }
+
+        ViewBag.authors = authors;
+        if (id > 0)
+        {
+            return View(books);
+        }
+        else
+        {
+            return View();
         }
     }
+    public ActionResult Book(string bookcode)
+    {
+        ViewBag.Message = "Your details page.";
+
+        return View(db.BOOK.FirstOrDefault(b => b.BOOK_CODE == bookcode));
+    }
+}
 }
