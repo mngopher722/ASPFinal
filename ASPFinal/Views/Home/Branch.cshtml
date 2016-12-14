@@ -39,6 +39,15 @@
                     </tr>
                 </table>
             }
+            foreach (INVENTORY inventory in Model.INVENTORY)
+            {
+                <table>
+                    <tr>
+                        <th>@Html.DisplayNameFor(Model => Model.BRANCH_NUM)</th>
+                        <td>@Html.DisplayFor(Model => Model.BRANCH_NUM)</td>
+                    </tr>
+                </table>
+            }
         }
     </div>
 </div>
