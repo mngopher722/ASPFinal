@@ -1,17 +1,29 @@
-﻿@{
+﻿@model Contact;
+@{
     ViewBag.Title = "Contact";
+    List<SelectListItem> branchlist = new List<SelectListItem>();
+
+    foreach (BRANCH branch in ViewBag.db.BRANCHes)
+    {
+        SelectListItem i = new SelectListItem();
+        i.Text = branch.BRANCH_NAME;
+        i.Value = branch.BRANCH_NUM.ToString();
+        branches.Add(i);
+    }
 }
+
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<h2>Share your Comments with Management</h2>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "result", HttpMethod = "Post" }))
+{<fieldset>
+    <ul>
+        <li>
+            @Html.LabelFor(f => f.f)
+        </li>
+    </ul>
+    </fieldset>
+    ;
+
