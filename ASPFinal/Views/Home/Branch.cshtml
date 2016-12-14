@@ -44,9 +44,14 @@
             }
             foreach (INVENTORY inventory in Model.INVENTORY)
             {
+                @foreach(var bookcode in)
                 <table>
                     <tr>
-                        <th>@Html.DisplayNameFor(Model => inventory.BOOK_CODE)</th>
+                        <th>@Html.DisplayNameFor(Model => Model.INVENTORY )</th>
+                        @foreach(var value in Model.INVENTORY)
+                        {
+                            @value.ON_HAND
+                        }
                         <th>@Html.DisplayNameFor(Model => Model.INVENTORY.Where(book => book.ON_HAND )</th>
                     </tr>
                 </table>
