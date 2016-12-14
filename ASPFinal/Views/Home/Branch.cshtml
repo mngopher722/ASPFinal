@@ -1,9 +1,12 @@
 ﻿@model ASPFinal.Models.BRANCH
 
+@using ASPFinal.Models;
 @{
     ViewBag.Title = "Branch";
     ASPFinal.Models.HenrysBookStore db = new ASPFinal.Models.HenrysBookStore();
+    
 }
+
 <div class="row">
     <div class="text-center">
         <h2>Branch</h2>
@@ -43,8 +46,8 @@
             {
                 <table>
                     <tr>
-                        <th>@Html.DisplayNameFor(Model => Model.BRANCH_NUM)</th>
-                        <td>@Html.DisplayFor(Model => Model.BRANCH_NUM)</td>
+                        <th>@Html.DisplayNameFor(Model => inventory.BOOK_CODE)</th>
+                        <th>@Html.DisplayNameFor(Model => Model.INVENTORY.Where(book => book.ON_HAND )</th>
                     </tr>
                 </table>
             }
