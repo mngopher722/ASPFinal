@@ -102,7 +102,7 @@ namespace ASPFinal.Controllers
             ViewBag.branches = branches;
             if (branchnum > 0)
             {
-                return View(branchlist); 
+                return View(branchlist.First(b => b.BRANCH_NUM == branchnum)); 
             }
             else
             {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ASPFinal.Models.BRANCH>
+﻿@model ASPFinal.Models.BRANCH
 
 @{
     ViewBag.Title = "Branch";
@@ -14,33 +14,30 @@
             @Html.DropDownList("branches", (IEnumerable<SelectListItem>)ViewBag.branches, "Select Branch", new { onchange = "this.form.submit();", Name = "branchnum" })
             if (Model != null)
             {
-                foreach (var branch in Model)
-                {
-                    <table>
-                        <tr>
-                            <th>Branch Number</th>
-                            <td>@branch.BRANCH_NUM</td>
-                        </tr>
-                    </table>
-                    <table>
-                        <tr>
-                            <th>Branch Name</th>
-                            <td>@branch.BRANCH_NAME</td>
-                        </tr>
-                    </table>
-                    <table>
-                        <tr>
-                            <th>Branch Location</th>
-                            <td>@branch.BRANCH_LOCATION</td>
-                        </tr>
-                    </table>
-                    <table>
-                        <tr>
-                            <th>Number of Employees</th>
-                            <td>@branch.NUM_EMPLOYEES</td>
-                        </tr>
-                    </table>
-                }
+                <table>
+                    <tr>
+                        <th>@Html.DisplayNameFor(Model => Model.BRANCH_NUM)</th>
+                        <td>@Html.DisplayFor(Model => Model.BRANCH_NUM)</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>@Html.DisplayNameFor(Model => Model.BRANCH_NAME)</th>
+                        <td>@Html.DisplayFor(Model => Model.BRANCH_NAME)</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>@Html.DisplayNameFor(Model => Model.BRANCH_LOCATION)</th>
+                        <td>@Html.DisplayFor(Model => Model.BRANCH_LOCATION)</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>@Html.DisplayNameFor(Model => Model.NUM_EMPLOYEES)</th>
+                        <td>@Html.DisplayFor(Model => Model.NUM_EMPLOYEES)</td>
+                    </tr>
+                </table>
             }
         }
     </div>
